@@ -32,12 +32,18 @@ const HeroSection = () => {
               prices.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mt-12">
-              <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg">
+              <a
+                href="#products"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg"
+              >
                 Explore Our Products
-              </button>
-              <button className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300">
+              </a>
+              <a
+                href="#about"
+                className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
+              >
                 Learn More About Us
-              </button>
+              </a>
             </div>
           </div>
 

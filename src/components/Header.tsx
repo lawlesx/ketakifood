@@ -12,6 +12,28 @@ const Header = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.substring(1); // Remove the # from href
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const headerHeight = 80; // Approximate height of sticky header
+      const elementPosition = targetElement.offsetTop - headerHeight;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+
+      // Close mobile menu if open
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <header className="w-full bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-20">
@@ -31,6 +53,7 @@ const Header = () => {
               <a
                 key={index}
                 href={link.href}
+                onClick={(e) => handleSmoothScroll(e, link.href)}
                 className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300 relative group"
               >
                 {link.name}
@@ -43,6 +66,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="#contact"
+              onClick={(e) => handleSmoothScroll(e, "#contact")}
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-md hover:shadow-lg"
             >
               Get Quote
@@ -87,7 +111,7 @@ const Header = () => {
                 <a
                   key={index}
                   href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
                   className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
                 >
                   {link.name}
@@ -95,7 +119,7 @@ const Header = () => {
               ))}
               <a
                 href="#contact"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => handleSmoothScroll(e, "#contact")}
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 text-center mt-4"
               >
                 Get Quote
