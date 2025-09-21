@@ -1,27 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useWeb3Form } from "@/hooks/useWeb3Form";
 
 const CTASection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    city: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+  const { formData, isSubmitting, submitStatus, handleChange, handleSubmit } =
+    useWeb3Form({
+      customSubject: "New Contact from Ketaki Food Homepage",
     });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", phone: "", city: "" });
-  };
 
   return (
     <section
@@ -43,68 +27,112 @@ const CTASection = () => {
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Success Message */}
+            {submitStatus === "success" && (
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+                ✅ Thank you! We will get back to you soon.
+              </div>
+            )}
+
+            {/* Error Message */}
+            {submitStatus === "error" && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                ❌ Sorry, there was an error. Please try again.
+              </div>
+            )}
+
             <div>
               <label
-                htmlFor="name"
+                htmlFor="cta-name"
                 className="block text-left font-semibold text-gray-700 mb-2"
               >
                 Full Name *
               </label>
               <input
                 type="text"
-                id="name"
+                id="cta-name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Enter your full name"
               />
             </div>
 
             <div>
               <label
-                htmlFor="phone"
+                htmlFor="cta-phone"
                 className="block text-left font-semibold text-gray-700 mb-2"
               >
                 Phone Number *
               </label>
               <input
                 type="tel"
-                id="phone"
+                id="cta-phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Enter your phone number"
               />
             </div>
 
             <div>
               <label
-                htmlFor="city"
+                htmlFor="cta-city"
                 className="block text-left font-semibold text-gray-700 mb-2"
               >
                 City *
               </label>
               <input
                 type="text"
-                id="city"
+                id="cta-city"
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="Enter your city"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg hover:shadow-xl"
+              disabled={isSubmitting}
+              className="w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {isSubmitting ? (
+                <span className="flex items-center justify-center">
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                "Send Message"
+              )}
             </button>
           </form>
 
