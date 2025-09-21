@@ -11,7 +11,7 @@ const Header = () => {
 
   const navigationLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: isHomePage ? "#about" : "/#about" },
+    { name: "About", href: "/about", isExternal: true },
     { name: "Products", href: isHomePage ? "#products" : "/#products" },
     {
       name: "Why Choose Us",
@@ -113,30 +113,16 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-3">
-              {navigationLinks.map((link, index) => {
-                if (link.isExternal) {
-                  return (
-                    <Link
-                      key={index}
-                      href={link.href}
-                      className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                }
-                return (
-                  <a
-                    key={index}
-                    href={link.href}
-                    onClick={(e) => handleSmoothScroll(e, link.href)}
-                    className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
-                  >
-                    {link.name}
-                  </a>
-                );
-              })}
+              {navigationLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
               <Link
                 href="/contact"
                 onClick={() => setIsMenuOpen(false)}
