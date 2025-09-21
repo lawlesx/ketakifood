@@ -18,16 +18,10 @@ const Header = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-green-800 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">🌱</span>
-            </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-green-800">
                 Ketaki Food
               </h1>
-              <p className="text-sm text-gray-600 hidden md:block">
-                Premium Soybean Seeds
-              </p>
             </div>
           </div>
 
