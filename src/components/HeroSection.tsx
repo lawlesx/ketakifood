@@ -13,6 +13,8 @@ const HeroSection = () => {
           src="/row-crops.jpg"
           alt="Soybean farming fields"
           fill
+          sizes="100vw"
+          priority
           className="object-cover opacity-20"
         />
       </div>
@@ -47,6 +49,8 @@ const HeroSection = () => {
                   src="/soybeans-scoop.jpg"
                   alt="Premium quality soybeans"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
                   className="object-cover rounded-xl shadow-xl"
                 />
               </div>

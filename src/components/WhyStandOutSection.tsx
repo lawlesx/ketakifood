@@ -36,6 +36,7 @@ const WhyStandOutSection = () => {
           src="/row-crops.jpg"
           alt="Sustainable farming background"
           fill
+          sizes="100vw"
           className="object-cover opacity-10"
         />
       </div>

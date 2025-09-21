@@ -37,6 +37,8 @@ const WhyChooseUs = () => {
           src="/grains.jpg"
           alt="Agricultural background"
           fill
+          sizes="100vw"
+          priority
           className="object-cover opacity-35"
         />
       </div>

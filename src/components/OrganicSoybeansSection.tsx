@@ -61,6 +61,7 @@ const OrganicSoybeansSection = () => {
                 src="/soybeans-scoop.jpg"
                 alt="Premium organic soybeans"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-800/70 via-transparent to-transparent"></div>
