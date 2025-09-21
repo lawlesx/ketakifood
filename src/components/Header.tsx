@@ -48,11 +48,12 @@ const Header = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-green-800">
-                Ketaki Food
-              </h1>
-            </div>
+            <Link
+              href="/"
+              className="text-2xl md:text-3xl font-bold text-green-800"
+            >
+              Ketaki Food
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -62,6 +63,11 @@ const Header = () => {
                 key={index}
                 href={link.href}
                 className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300 relative group"
+                onClick={(e) => {
+                  if (link.href.startsWith("#")) {
+                    handleSmoothScroll(e, link.href);
+                  }
+                }}
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
@@ -118,7 +124,12 @@ const Header = () => {
                   key={index}
                   href={link.href}
                   className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    setIsMenuOpen(false);
+                    if (link.href.startsWith("#")) {
+                      handleSmoothScroll(e, link.href);
+                    }
+                  }}
                 >
                   {link.name}
                 </Link>
