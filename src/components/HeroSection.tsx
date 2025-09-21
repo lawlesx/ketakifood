@@ -8,14 +8,14 @@ const HeroSection = () => {
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50/90 to-amber-50/90 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-green-50/90 to-amber-50/90 z-10 animate-subtle-scale"></div>
         <Image
           src="/row-crops.jpg"
           alt="Soybean farming fields"
           fill
           sizes="100vw"
           priority
-          className="object-cover opacity-95"
+          className="object-cover opacity-95 animate-subtle-scale"
         />
       </div>
 
@@ -23,24 +23,24 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-green-800 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-green-800 mb-6 leading-tight animate-fade-in-up">
               Global Exporter of{" "}
               <span className="text-amber-600">Premium Soybean Seeds</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed animate-fade-in-up animate-delay-200">
               Supplying high-quality soybean seeds worldwide at competitive
               prices.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mt-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mt-12 animate-fade-in-up animate-delay-400">
               <a
                 href="#products"
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Explore Our Products
               </a>
               <a
                 href="#about"
-                className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
+                className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105"
               >
                 Learn More About Us
               </a>
@@ -48,8 +48,8 @@ const HeroSection = () => {
           </div>
 
           {/* Image */}
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+          <div className="relative animate-scale-in animate-delay-600">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 animate-float">
               <div className="relative h-96 w-full">
                 <Image
                   src="/soybeans-scoop.jpg"
@@ -57,7 +57,7 @@ const HeroSection = () => {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
-                  className="object-cover rounded-xl shadow-xl"
+                  className="object-cover rounded-xl shadow-xl transition-transform duration-300 hover:scale-105"
                 />
               </div>
             </div>
