@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const OrganicSoybeansSection = () => {
   return (
     <section id="products" className="py-16 px-4 md:px-8 lg:px-20 bg-white">
@@ -52,32 +54,44 @@ const OrganicSoybeansSection = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-amber-50 to-green-50 p-8 rounded-lg">
-            <div className="text-center mb-6">
-              <div className="text-6xl mb-4">🌾</div>
-              <h3 className="text-2xl font-bold text-green-800">
-                Naturally Grown Excellence
-              </h3>
+          <div className="relative">
+            {/* Main Product Image */}
+            <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-2xl mb-6">
+              <Image
+                src="/soybeans-scoop.jpg"
+                alt="Premium organic soybeans"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-green-800/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">
+                  Premium Organic Soybeans
+                </h3>
+                <p className="text-green-200">Naturally Grown Excellence</p>
+              </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-white rounded">
-                <span className="font-semibold text-gray-700">
+            {/* Quality Indicators */}
+            <div className="grid grid-cols-3 gap-4">
+              <div className="bg-white p-4 rounded-lg shadow-md text-center border-2 border-green-100">
+                <div className="text-2xl mb-2">🌱</div>
+                <p className="text-sm font-semibold text-gray-700">
                   Chemical-Free
-                </span>
-                <span className="text-green-600 font-bold">100%</span>
+                </p>
+                <p className="text-xs text-green-600">100%</p>
               </div>
-              <div className="flex items-center justify-between p-3 bg-white rounded">
-                <span className="font-semibold text-gray-700">
+              <div className="bg-white p-4 rounded-lg shadow-md text-center border-2 border-green-100">
+                <div className="text-2xl mb-2">💪</div>
+                <p className="text-sm font-semibold text-gray-700">
                   Nutrient Rich
-                </span>
-                <span className="text-green-600 font-bold">Premium</span>
+                </p>
+                <p className="text-xs text-green-600">Premium</p>
               </div>
-              <div className="flex items-center justify-between p-3 bg-white rounded">
-                <span className="font-semibold text-gray-700">
-                  Eco-Friendly
-                </span>
-                <span className="text-green-600 font-bold">Certified</span>
+              <div className="bg-white p-4 rounded-lg shadow-md text-center border-2 border-green-100">
+                <div className="text-2xl mb-2">🏆</div>
+                <p className="text-sm font-semibold text-gray-700">Certified</p>
+                <p className="text-xs text-green-600">Quality</p>
               </div>
             </div>
           </div>

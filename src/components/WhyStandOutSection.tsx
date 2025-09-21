@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const WhyStandOutSection = () => {
   const standoutFeatures = [
     {
@@ -27,8 +29,18 @@ const WhyStandOutSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-20 bg-gradient-to-br from-green-600 to-green-800 text-white">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-16 px-4 md:px-8 lg:px-20 bg-gradient-to-br from-green-600 to-green-800 text-white overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/row-crops.jpg"
+          alt="Sustainable farming background"
+          fill
+          className="object-cover opacity-10"
+        />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Why Our Organic Soybeans Stand Out
