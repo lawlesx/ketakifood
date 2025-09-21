@@ -38,7 +38,6 @@ const WhyChooseUs = () => {
           alt="Agricultural background"
           fill
           sizes="100vw"
-          priority
           className="object-cover opacity-35"
         />
       </div>

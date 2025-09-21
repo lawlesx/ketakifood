@@ -33,7 +33,6 @@ const AboutSection = () => {
                 alt="High quality grain processing"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                priority
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-800/60 to-transparent"></div>

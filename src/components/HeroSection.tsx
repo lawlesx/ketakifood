@@ -15,7 +15,7 @@ const HeroSection = () => {
           fill
           sizes="100vw"
           priority
-          className="object-cover opacity-20"
+          className="object-cover opacity-95"
         />
       </div>
 
@@ -43,7 +43,7 @@ const HeroSection = () => {
 
           {/* Image */}
           <div className="relative">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
               <div className="relative h-96 w-full">
                 <Image
                   src="/soybeans-scoop.jpg"
@@ -53,9 +53,6 @@ const HeroSection = () => {
                   priority
                   className="object-cover rounded-xl shadow-xl"
                 />
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-amber-500 text-white px-6 py-3 rounded-xl font-bold shadow-lg">
-                Premium Quality
               </div>
             </div>
           </div>
