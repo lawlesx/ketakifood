@@ -1,15 +1,23 @@
 "use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isHomePage = pathname === "/";
 
   const navigationLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Products", href: "#products" },
-    { name: "Why Choose Us", href: "#why-choose" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: isHomePage ? "#about" : "/#about" },
+    { name: "Products", href: isHomePage ? "#products" : "/#products" },
+    {
+      name: "Why Choose Us",
+      href: isHomePage ? "#why-choose" : "/#why-choose",
+    },
+    { name: "Contact", href: "/contact", isExternal: true },
   ];
 
   const handleSmoothScroll = (
@@ -50,27 +58,25 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navigationLinks.map((link, index) => (
-              <a
+              <Link
                 key={index}
                 href={link.href}
-                onClick={(e) => handleSmoothScroll(e, link.href)}
                 className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300 relative group"
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a
-              href="#contact"
-              onClick={(e) => handleSmoothScroll(e, "#contact")}
+            <Link
+              href="/contact"
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-md hover:shadow-lg"
             >
               Get Quote
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -107,23 +113,37 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-3">
-              {navigationLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  onClick={(e) => handleSmoothScroll(e, link.href)}
-                  className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={(e) => handleSmoothScroll(e, "#contact")}
+              {navigationLinks.map((link, index) => {
+                if (link.isExternal) {
+                  return (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                }
+                return (
+                  <a
+                    key={index}
+                    href={link.href}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
+                    className="text-gray-700 hover:text-green-600 font-medium py-2 px-3 rounded-md hover:bg-green-50 transition-colors duration-300"
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
+              <Link
+                href="/contact"
+                onClick={() => setIsMenuOpen(false)}
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 text-center mt-4"
               >
                 Get Quote
-              </a>
+              </Link>
             </nav>
           </div>
         )}
